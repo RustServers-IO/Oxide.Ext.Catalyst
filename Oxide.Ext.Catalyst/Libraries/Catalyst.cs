@@ -155,7 +155,7 @@ namespace Oxide.Ext.Catalyst.Libraries
         internal string SHA(string source)
         {
             var sha1 = System.Security.Cryptography.SHA1.Create();
-            byte[] buf = System.Text.Encoding.UTF8.GetBytes("test");
+            byte[] buf = System.Text.Encoding.UTF8.GetBytes(source);
             byte[] hash= sha1.ComputeHash(buf, 0, buf.Length);
             return System.BitConverter.ToString(hash).Replace("-", "");
         }
@@ -185,7 +185,7 @@ namespace Oxide.Ext.Catalyst.Libraries
                     {
                         if (loaded != null && loaded.Version.ToString() != version)
                         {
-                            statusChanges.Add(StatusMessage.VersionMismatch, filename + ": " + loaded.Version.ToString() + " to " + version + " has an available upgrade");
+                            statusChanges.Add(StatusMessage.VersionMismatch, filename + ": local version (" + loaded.Version.ToString() + ") different than remote version (" + version + ")");
                         }
                         else
                         {

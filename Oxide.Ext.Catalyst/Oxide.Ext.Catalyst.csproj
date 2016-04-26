@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Catalyst</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Catalyst</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,41 +39,59 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Oxide.Core">
-      <HintPath>..\..\Oxide.Core.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>bin\Debug\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>bin\Debug\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Input">
-      <HintPath>..\..\Facepunch.Input.dll</HintPath>
+      <HintPath>bin\Debug\Facepunch.Input.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Network">
-      <HintPath>..\..\Facepunch.Network.dll</HintPath>
+      <HintPath>bin\Debug\Facepunch.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Rcon">
+      <HintPath>bin\Debug\Facepunch.Rcon.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.System">
-      <HintPath>..\..\Facepunch.System.dll</HintPath>
+      <HintPath>bin\Debug\Facepunch.System.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.UnityEngine">
-      <HintPath>..\..\Facepunch.UnityEngine.dll</HintPath>
+      <HintPath>bin\Debug\Facepunch.UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="LZ4n">
+      <HintPath>bin\Debug\LZ4n.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Newtonsoft.Json.dll</HintPath>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net">
-      <HintPath>..\..\protobuf-net.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Oxide.Core">
+      <HintPath>bin\Debug\Oxide.Core.dll</HintPath>
     </Reference>
     <Reference Include="Oxide.Ext.CSharp">
-      <HintPath>..\..\Oxide.Ext.CSharp.dll</HintPath>
+      <HintPath>bin\Debug\Oxide.Ext.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Oxide.Ext.Rust">
-      <HintPath>..\..\Oxide.Ext.Rust.dll</HintPath>
+      <HintPath>bin\Debug\Oxide.Ext.Rust.dll</HintPath>
     </Reference>
     <Reference Include="Oxide.Game.Rust">
-      <HintPath>..\..\Oxide.Game.Rust.dll</HintPath>
+      <HintPath>bin\Debug\Oxide.Game.Rust.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>bin\Debug\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Data">
+      <HintPath>bin\Debug\Rust.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="RustBuild">
+      <HintPath>bin\Debug\RustBuild.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>bin\Debug\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>bin\Debug\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
