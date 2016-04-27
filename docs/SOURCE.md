@@ -2,9 +2,13 @@
 
 Instructions on how to duplicate the RESTful web service used by Catalyst.
 
-### Warning
+### Status: Request For Proposal
 
-The standards set below are still subject to substantial change during the ALPHA stage of Catalyst development.
+We created this extension with the hope that it (or something similar) might become the official standard and used extensively by the Oxide community.  
+
+The API described below is still subject to substantial change while in ALPHA stage.  We are still accepting feedback and pull-requests regarding (even massive or fundamental) changes to this API.  
+
+The specification outlined below exists for the purpose of providing the community with an opportunity to provide feedback and suggestions.  Some features are still in development and this document serves primarily as an outline of the proposed protocol and an outlet for the community to expand on a potential implementation of plugin dependency and version control standard for Oxide.
 
 ### Plugin Information
 
@@ -16,7 +20,7 @@ The standards set below are still subject to substantial change during the ALPHA
 ``http://rustservers.io/p/EntityOwner.json``
 
 **JSON Result**:
-``
+````
 {
    "name":"EntityOwner",
    "ext":"cs",
@@ -42,12 +46,12 @@ The standards set below are still subject to substantial change during the ALPHA
    "src":"https:\/\/raw.githubusercontent.com\/Calytic\/oxideplugins\/master\/rust\/EntityOwner.cs",
    "version":"3.0.3"
 }
-``
+````
 
 ``http://rustservers.io/p/HumanNPC.json``
 
 **JSON Result**:
-``
+````
 {
    "name":"HumanNPC",
    "ext":"cs",
@@ -74,7 +78,7 @@ The standards set below are still subject to substantial change during the ALPHA
    "src":"https:\/\/raw.githubusercontent.com\/Calytic\/oxideplugins\/master\/rust\/HumanNPC.cs",
    "version":"0.3.2"
 }
-``
+````
 
 ## Search Plugins
 
@@ -87,7 +91,7 @@ Provides a list of plugins where given search terms are found anywhere in the pl
 ``http://rustservers.io/s/Anti.json``
 
 **JSON Result**:
-``
+````
 {
    "data":[
       "AntiSpeedHack",
@@ -109,7 +113,7 @@ Provides a list of plugins where given search terms are found anywhere in the pl
       "AntiGlitch"
    ]
 }
-``
+````
 
 ## Using Your New Service
 
@@ -119,4 +123,4 @@ Provides a list of plugins where given search terms are found anywhere in the pl
 
 ## Development
 
-As this service is still in development, any suggestions or proposed changes to the protocol may be submitted here in the form of an issue or pull request.
+As this service is still in development, any suggestions or proposed changes to the protocol may be submitted here in the form of an issue or pull request. 
