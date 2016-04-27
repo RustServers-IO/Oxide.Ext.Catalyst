@@ -10,9 +10,38 @@ The API described below is still subject to substantial change while in ALPHA st
 
 The specification outlined below exists for the purpose of providing the community with an opportunity to provide feedback and suggestions.  Some features are still in development and this document serves primarily as an outline of the proposed protocol and an outlet for the community to expand on a potential implementation of plugin dependency and version control standard for Oxide.
 
+### JSON Configuration
+
+This API requires that a json configuration file accompanies every plugin.  Currently these configuration files are generated automatically (by a separate deprecated api). In the future plugin authors would optionally be able to provide a configuration file with their plugins to be compatible with a package management solution such as this.
+
+### Example File
+``EntityOwner.json``
+
+````
+{
+    "name": "EntityOwner",
+    "description": "Modify entity ownership and cupboard\/turret authorization",
+    "author": "Calytic",
+    "version": "3.0.3",
+    "configuration": true,
+    "suggest": {
+        "DeadPlayersList": "*"
+    },
+    "language": "cs",
+    "games": [
+        "rust"
+    ],
+    "keywords": [
+        "oxide",
+        "rust"
+    ]
+}
+````
+
 ### Plugin Information
 
 **URL**: ``http://example.org/p/{PluginName}.json``
+
 **URL**: ``http://example.org/p/{PluginName}/{PluginVersion}.json`` **(still in development)**
 
 #### Example
