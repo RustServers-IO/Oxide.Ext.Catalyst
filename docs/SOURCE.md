@@ -1,4 +1,4 @@
-## Sourcing Catalyst
+## API Proposal (currently used for Catalyst)
 
 Instructions on how to duplicate the RESTful web service used by Catalyst.
 
