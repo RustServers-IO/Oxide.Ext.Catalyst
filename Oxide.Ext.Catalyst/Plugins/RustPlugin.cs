@@ -18,6 +18,17 @@ namespace Oxide.Ext.Catalyst.Plugins
             cmd.AddConsoleCommand(command, this, methodName);
         }
 
+        [HookMethod("ccVersion")]
+        protected override void ccStatus (ConsoleSystem.Arg arg)
+        {
+            if (arg.connection != null) {
+                arg.ReplyWith ("Permission Denied");
+                return;
+            }
+
+            Version();
+        }
+
         [HookMethod("ccStatus")]
         protected override void ccStatus (ConsoleSystem.Arg arg)
         {
@@ -27,6 +38,17 @@ namespace Oxide.Ext.Catalyst.Plugins
             }
 
             Status();
+        }
+
+        [HookMethod("ccSync")]
+        protected override void ccSync (ConsoleSystem.Arg arg)
+        {
+            if (arg.connection != null) {
+                arg.ReplyWith ("Permission Denied");
+                return;
+            }
+
+            Sync();
         }
 
 		[HookMethod("ccDebug")]

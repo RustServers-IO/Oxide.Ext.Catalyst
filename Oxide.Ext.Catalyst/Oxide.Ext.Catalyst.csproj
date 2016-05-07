@@ -72,9 +72,6 @@
     <Reference Include="Oxide.Ext.CSharp">
       <HintPath>bin\Debug\Oxide.Ext.CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Oxide.Ext.Rust">
-      <HintPath>bin\Debug\Oxide.Ext.Rust.dll</HintPath>
-    </Reference>
     <Reference Include="Oxide.Game.Rust">
       <HintPath>bin\Debug\Oxide.Game.Rust.dll</HintPath>
     </Reference>

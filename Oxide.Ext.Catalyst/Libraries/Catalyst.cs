@@ -479,6 +479,25 @@ namespace Oxide.Ext.Catalyst.Libraries
 			return Error("No plugin found");
 		}
 
+        internal object RequirePlugin(JObject pluginInfo, string version = "*")
+        {
+            if (!isValidCommit)
+            {
+                return false;
+            }
+            string name = pluginInfo ["name"].ToString ();
+            string ext = pluginInfo ["ext"].ToString ();
+            string path = Path.Combine (_PluginDirectory, name + "." + ext);
+
+            if (!Settings.Require.ContainsKey (name)) 
+            {
+                CommitRequire (name, path, version);
+                return true;
+            }
+
+            return false;
+        }
+
 		internal object InstallPlugin (JObject pluginInfo, string version = "*")
 		{
 			string name = pluginInfo ["name"].ToString ();

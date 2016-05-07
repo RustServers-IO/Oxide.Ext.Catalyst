@@ -1,6 +1,6 @@
 ## Catalyst 
 
-**Version**: ALPHA-0.0.6
+**Version**: ALPHA-0.0.7
 
 Plugin & dependency management extension by [RustServers.IO](http://rustservers.io) for the [Oxide](http://oxidemod.org) modding framework.
 
@@ -44,13 +44,13 @@ Plugin & dependency management extension by [RustServers.IO](http://rustservers.
 
   Command-line editing of plugin configuration files (alpha)
 
-  ````catalyst.config Setting.SubSetting [NewValue]````
+  ````catalyst.config PluginName Setting.SubSetting [NewValue]````
 
 * **Search**
 
   Search available source repositories for a plugin by name, description, or requirements
 
-  ````catalyst.search search terms````
+  ````catalyst.search search term1 [term2] [...]````
 
 * **Info**
 
@@ -64,11 +64,23 @@ Plugin & dependency management extension by [RustServers.IO](http://rustservers.
 
   ``catalyst.validate``
 
+* **Synchronize**
+
+  Ensures all of the plugins you have installed are required in the configuration
+
+  ``catalyst.sync``
+
 * **Status**
 
-  List any discrepencies between installed and source versions or source files (using checksums)
+  List any discrepencies between installed and remote versions of a plugin
 
   ``catalyst.status``
+
+* **Version**
+
+  Display current catalyst version
+
+  ``catalyst.version``
 
 ### Sourcing
 

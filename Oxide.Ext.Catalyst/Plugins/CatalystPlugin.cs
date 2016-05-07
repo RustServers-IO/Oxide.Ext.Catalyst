@@ -18,12 +18,13 @@ using UnityEngine;
 
 namespace Oxide.Ext.Catalyst.Plugins
 {
-	public abstract class CatalystPlugin : CovalencePlugin
+	public abstract class CatalystPlugin : CSPlugin
 	{
 		private CatalystExtension Extension;
 		private Oxide.Ext.Catalyst.Libraries.Catalyst library;
+        private Core.Libraries.Plugins plugins;
 
-		internal CatalystPlugin(CatalystExtension extension)
+		public CatalystPlugin(CatalystExtension extension)
 	    {
 			this.Name = "Catalyst";
 			this.Title = "Catalyst";
@@ -38,7 +39,8 @@ namespace Oxide.Ext.Catalyst.Plugins
 		[HookMethod("Init")]
 	    private void Init ()
 		{
-			library = Interface.Oxide.GetLibrary<Oxide.Ext.Catalyst.Libraries.Catalyst> ("Catalyst");
+            plugins = Interface.Oxide.GetLibrary<Core.Libraries.Plugins>();
+			library = Interface.Oxide.GetLibrary<Oxide.Ext.Catalyst.Libraries.Catalyst> ();
 			if (library == null) 
 			{
 				LogError("[Catalyst] Library not found");
@@ -55,6 +57,8 @@ namespace Oxide.Ext.Catalyst.Plugins
 			AddConsoleCommand ("catalyst.info", "ccInfo");
 			AddConsoleCommand ("catalyst.debug", "ccDebug");
             AddConsoleCommand ("catalyst.status", "ccStatus");
+            AddConsoleCommand ("catalyst.sync", "ccSync");
+            AddConsoleCommand ("catalyst.version", "ccVersion");
 		}
 
         protected abstract void ccUpdate(ConsoleSystem.Arg arg);
@@ -67,6 +71,13 @@ namespace Oxide.Ext.Catalyst.Plugins
         protected abstract void ccInfo(ConsoleSystem.Arg arg);
         protected abstract void ccDebug(ConsoleSystem.Arg arg);
         protected abstract void ccStatus(ConsoleSystem.Arg arg);
+        protected abstract void ccSync(ConsoleSystem.Arg arg);
+        protected abstract void ccVersion(ConsoleSystem.Arg arg);
+
+        protected void Version()
+        {
+            Log("Version:" + Extension.Version.ToString());
+        }
 
         protected void Status()
         {
@@ -232,6 +243,39 @@ namespace Oxide.Ext.Catalyst.Plugins
 			}
 		}
 
+        protected void Sync()
+        {
+            library.BeginCommit();
+
+            List<Plugin> plugins = Manager.GetPlugins().ToList();
+
+            int i = 0;
+            foreach (Plugin plugin in plugins)
+            {
+                if (!plugin.IsCorePlugin)
+                {
+                    var result = library.PluginExists(plugin.Name);
+
+                    if (result is JObject)
+                    {
+                        if (!library.Settings.Require.ContainsKey(plugin.Name))
+                        {
+                            HandleResult(library.RequirePlugin((JObject)result), "Requiring " + plugin.Name);
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        Log("Plugin Not Found. " + plugin.Name);
+                    }
+                }
+            }
+
+            Log("Added ("+i+") plugins to requires");
+
+            library.EndCommit();
+        }
+
 		protected void Require (string name, string version)
 		{
 			library.BeginCommit ();
@@ -350,5 +394,25 @@ namespace Oxide.Ext.Catalyst.Plugins
 				Log (action + " queued.");
 			}
 		}
+
+        protected void Log(string format, params object[] args)
+        {
+            Interface.Oxide.LogInfo("[{0}] {1}", Title, args.Length > 0 ? string.Format(format, args) : format);
+        }
+
+        protected void LogWarning(string format, params object[] args)
+        {
+            Interface.Oxide.LogWarning("[{0}] {1}", Title, args.Length > 0 ? string.Format(format, args) : format);
+        }
+
+        protected void LogError(string format, params object[] args)
+        {
+            Interface.Oxide.LogError("[{0}] {1}", Title, args.Length > 0 ? string.Format(format, args) : format);
+        }
+
+        protected void Puts(string format, params object[] args)
+        {
+            Interface.Oxide.LogInfo("[{0}] {1}", Title, args.Length > 0 ? string.Format(format, args) : format);
+        }
 	}
 }
